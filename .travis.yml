@@ -11,6 +11,10 @@ branches:
     - travis-test
 
 
+os:
+  - linux
+  - osx
+
 dist: xenial
 
 compiler:
