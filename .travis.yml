@@ -19,7 +19,7 @@ compiler:
 
 before_install:
   - sudo apt-get install -y rapidjson-dev
-  - sudo apt-get install -y libboost-dev libboost-filesystem-dev libboost-system-dev
+  - sudo apt-get install -y libboost-dev libboost-filesystem-dev libboost-system-dev libboost-program-options-dev 
   - sudo apt-get install -y libgoogle-glog-dev libyaml-cpp-dev qt5-default libqt5svg5-dev
   - sudo apt-get install -y libopencv-dev
   - sudo pip install numpy  
