@@ -88,7 +88,7 @@ void RleRegions::drawRegions(cv::Mat &image) {
 
         rleDecode(&(it->region), mask.data , 1);
         mask = mask * 255;
-        cv::rotate(mask, mask, cv::ROTATE_90_CLOCKWISE);
+        //cv::rotate(mask, mask, cv::ROTATE_90_CLOCKWISE);
         cv::flip(mask, mask, 1);
 
 
