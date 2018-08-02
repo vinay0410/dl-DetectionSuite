@@ -22,7 +22,7 @@ before_install:
   - sudo apt-get install -y libboost-dev libboost-filesystem-dev
   - sudo apt-get install -y libgoogle-glog-dev libyaml-cpp-dev qt5-default libqt5svg5-dev
   - sudo apt-get install -y libopencv-dev
-  
+  - sudo pip install numpy  
 
 before_script:
   - cd DeepLearningSuite
