@@ -11,6 +11,8 @@ branches:
     - travis-test
 
 
+dist: xenial
+
 compiler:
   - gcc
   - clang
