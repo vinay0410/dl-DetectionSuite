@@ -27,10 +27,10 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then echo 'export PATH="/usr/local/opt/qt/bin:$PATH"' >> ~/.bash_profile ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install opencv ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y rapidjson-dev ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y libboost-dev libboost-filesystem-dev libboost-system-dev libboost-program-options-dev ; fi 
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y libboost-dev libboost-filesystem-dev libboost-system-dev libboost-program-options-dev ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y libgoogle-glog-dev libyaml-cpp-dev qt5-default libqt5svg5-dev ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y libopencv-dev ; fi
-  - sudo pip install numpy  
+  - sudo pip install numpy
 
 before_script:
   - cd DeepLearningSuite
@@ -41,7 +41,7 @@ before_script:
 script: make
 
 after_success:
-  - sh package.sh
+  - sh ../package.sh
   - ls -lh ../out/* # Assuming you have some files in out/ that you would like to upload
   - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
   - bash upload.sh ../out/*
