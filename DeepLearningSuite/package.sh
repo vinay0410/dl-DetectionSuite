@@ -19,10 +19,10 @@ wget -q https://github.com/probonopd/AppImages/raw/master/functions.sh -O ./func
 cd $APP.AppDir
 
 mkdir -p usr/bin
-mv DatasetEvaluationApp/DatasetEvaluationApp usr/bin/DatasetEvaluationApp
+mv build/DatasetEvaluationApp/DatasetEvaluationApp usr/bin/DatasetEvaluationApp
 
 mkdir -p usr/lib
-ldd DatasetEvaluationApp/DatasetEvaluationApp | grep "=> /" | awk '{print $3}' | xargs -I '{}' cp -v '{}' usr/lib/
+ldd build/DatasetEvaluationApp/DatasetEvaluationApp | grep "=> /" | awk '{print $3}' | xargs -I '{}' cp -v '{}' usr/lib/
 
 cd usr/ ; find . -type f -exec sed -i -e 's|/usr|././|g' {} \; ; cd -
 

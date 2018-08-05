@@ -26,6 +26,7 @@ IF(ENABLE_QT)
   		 ${Qt5OpenGL_LIBRARIES}
   	)
 
+    message(${QT_INCLUDE_DIRS})
     SET(QT_FOUND TRUE)
   ELSE()
 
