@@ -1,6 +1,7 @@
 #!/bin/sh
 set -ex
 git clone --single-branch -b 3.4 https://github.com/opencv/opencv.git
+cd opencv
 git branch
 mkdir build && cd build
 cmake ..
