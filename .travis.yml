@@ -52,8 +52,16 @@ script: make -j4
 after_success:
   - bash ../package.sh
   - ls -lh out/* # Assuming you have some files in out/ that you would like to upload
-  - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
-  - bash upload.sh out/*
+
+deploy:
+  provider: releases
+  api_key:
+    secure: K/lOlNIjkXPDf1ACKQGV163fUx6rhweQAGktM2zwb3kFog99l3PjnE8Ed6tRP/rPoEmG10W+cK9INQhRVrZLK93nIrsWRE5vyWI72sT7jMC2hivDg7An2MnLVaigLLaKX/G+8zW14WFP3S49jwXDLgp249cO7lag$
+  file: out/*
+  on:
+    repo: vinay0410/dl-DetectionSuite
+    branch: travis-test
+
 
 branches:
   except:
