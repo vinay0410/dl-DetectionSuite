@@ -28,7 +28,7 @@ cache:
      - $HOME/opencv/
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then wget https://www.python.org/ftp/python/2.7.15/python-2.7.15-macosx10.6.pkg ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then wget https://www.python.org/ftp/python/2.7.15/python-2.7.15-macosx10.6.pkg  -target /; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo installer -pkg python-2.7.15-macosx10.6.pkg ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install boost rapidjson glog yaml-cpp qt ; fi
