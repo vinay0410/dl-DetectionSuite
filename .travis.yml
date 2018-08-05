@@ -31,7 +31,7 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y libboost-dev libboost-filesystem-dev libboost-system-dev libboost-program-options-dev ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y libgoogle-glog-dev libyaml-cpp-dev qt5-default libqt5svg5-dev ; fi
   - sudo pip install numpy
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then bash install_opencv.sh ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./install_opencv.sh ; fi
 
 before_script:
   - cd DeepLearningSuite
