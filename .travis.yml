@@ -22,6 +22,11 @@ compiler:
   - gcc
   - clang
 
+cache:
+   pip: true
+   directories:
+     - opencv/
+
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install boost rapidjson glog yaml-cpp qt ; fi
@@ -39,7 +44,7 @@ before_script:
   - cd build
   - cmake ..
 
-script: make
+script: make -j4
 
 after_success:
   - bash ../package.sh
