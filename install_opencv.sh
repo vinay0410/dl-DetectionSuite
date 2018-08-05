@@ -1,9 +1,9 @@
 #!/bin/sh
 set -ex
-git clone --single-branch -b 3.4 https://github.com/opencv/opencv.git
-cd opencv
-git branch
+wget https://github.com/opencv/opencv/archive/3.4.2.zip
+unzip 3.4.2.zip
+cd opencv-3.4.2
 mkdir build && cd build
 cmake ..
-make -j${nproc}
+make -j4
 sudo make install
