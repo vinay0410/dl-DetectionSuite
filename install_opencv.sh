@@ -1,15 +1,16 @@
 #!/bin/sh
-if [ -n "$(ls -A opencv/build)" ];
+if [ -n "$(ls -A $HOME/opencv/build)" ];
  then
  	# We're using a cached version of our OpenCV build
- 	cd opencv/build;
+ 	cd $HOME/opencv/build;
 	sudo make install
  else
  	# No OpenCV cache – clone and make the files
- 	rm -rf opencv;
+ 	rm -rf $HOME/opencv;
 	wget https://github.com/opencv/opencv/archive/3.4.2.zip
-	unzip -q 3.4.2.zip
-	cd opencv-3.4.2
+	unzip -q 3.4.2.zip -d $HOME/
+	mv $HOME/opencv-3.4.2 $HOME/opencv
+	cd opencv
 	mkdir build && cd build
 	cmake ..
 	make -j4
