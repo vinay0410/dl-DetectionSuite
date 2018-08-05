@@ -51,7 +51,8 @@ cat > $APP.desktop <<EOF
 Name=$APP
 Icon=$APP
 Exec=AppRun
-Categories=Programming;
+Type=Application
+Categories=Utilities;
 EOF
 
 cd ..
