@@ -28,9 +28,9 @@ ldd ../DatasetEvaluationApp/DatasetEvaluationApp | grep "=> /" | awk '{print $3}
 
 echo "Now copying Qt plugin libraries"
 # For Qt Dependency
-cp -v `find /usr -iname 'libqxcb.so'` usr/lib/
+cp -v `find /usr -iname 'libqxcb.so'` platforms/
 
-find /usr -iname 'libqxcb.so' | xargs ldd | grep "=> /" | awk '{print $3}' | xargs -I '{}' cp -v '{}' usr/lib/
+find /usr -iname 'libqxcb.so' | xargs ldd | grep "=> /" | awk '{print $3}' | xargs -I '{}' cp -v '{}' platforms
 
 cd usr/ ; find . -type f -exec sed -i -e 's|/usr|././|g' {} \; ; cd -
 
@@ -45,7 +45,7 @@ cd - > /dev/null
 # disable parameter expansion to forward all arguments unprocessed to the VM
 set -f
 # run the VM and pass along all arguments as is
-LD_LIBRARY_PATH="$DIR/usr/lib" "${DIR}/usr/bin/" "${DIR}/usr/bin/DatasetEvaluationApp" `zenity --file-selection --filename="$PWD"` "$@"
+LD_LIBRARY_PATH="$DIR/usr/lib" "${DIR}/usr/bin/DatasetEvaluationApp" "$@"
 EOF
 
 chmod +x AppRun
