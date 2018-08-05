@@ -47,7 +47,6 @@ before_script:
 
 script: make -j4
 
-GITHUB_TOKEN: K/lOlNIjkXPDf1ACKQGV163fUx6rhweQAGktM2zwb3kFog99l3PjnE8Ed6tRP/rPoEmG10W+cK9INQhRVrZLK93nIrsWRE5vyWI72sT7jMC2hivDg7An2MnLVaigLLaKX/G+8zW14WFP3S49jwXDLgp249cO7lag$
 
 after_success:
   - bash ../package.sh
