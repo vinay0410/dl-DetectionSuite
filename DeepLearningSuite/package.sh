@@ -26,6 +26,9 @@ cp ../DatasetEvaluationApp/DatasetEvaluationApp usr/bin/
 mkdir -p usr/lib
 ldd ../DatasetEvaluationApp/DatasetEvaluationApp | grep "=> /" | awk '{print $3}' | xargs -I '{}' cp -v '{}' usr/lib/
 
+# For Qt Dependency
+find /usr -iname 'libqxcb.so' | xargs ldd | grep "=> /" | awk '{print $3}' | xargs -I '{}' cp -v '{}' usr/lib/
+
 cd usr/ ; find . -type f -exec sed -i -e 's|/usr|././|g' {} \; ; cd -
 
 cat > AppRun << 'EOF'
