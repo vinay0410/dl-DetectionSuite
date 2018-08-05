@@ -8,7 +8,7 @@
 
 export ARCH=$(arch)
 
-APP=Pharo
+APP=DetectionSuite
 LOWERAPP=${APP,,}
 
 
@@ -18,17 +18,13 @@ wget -q https://github.com/probonopd/AppImages/raw/master/functions.sh -O ./func
 
 cd $APP.AppDir
 
-wget -O - get.pharo.org/vm60 | bash
-
 mkdir -p usr/bin
-mv pharo-vm/pharo usr/bin/pharo
+mv DatasetEvaluationApp/DatasetEvaluationApp usr/bin/DatasetEvaluationApp
 
 mkdir -p usr/lib
-mv pharo-vm/* usr/lib
+ldd DatasetEvaluationApp/DatasetEvaluationApp | grep "=> /" | awk '{print $3}' | xargs -I '{}' cp -v '{}' usr/lib/
 
 cd usr/ ; find . -type f -exec sed -i -e 's|/usr|././|g' {} \; ; cd -
-
-rm -rf pharo pharo-ui pharo-vm
 
 cat > AppRun << 'EOF'
 #!/usr/bin/env bash
@@ -41,7 +37,7 @@ cd - > /dev/null
 # disable parameter expansion to forward all arguments unprocessed to the VM
 set -f
 # run the VM and pass along all arguments as is
-LD_LIBRARY_PATH="$DIR/usr/lib" "${DIR}/usr/bin/pharo" `zenity --file-selection --filename="$PWD"` "$@"
+LD_LIBRARY_PATH="$DIR/usr/lib" "${DIR}/usr/bin/" "${DIR}/usr/bin/DatasetEvaluationApp" `zenity --file-selection --filename="$PWD"` "$@"
 EOF
 
 chmod +x AppRun
