@@ -18,11 +18,13 @@ wget -q https://github.com/probonopd/AppImages/raw/master/functions.sh -O ./func
 
 cd $APP.AppDir
 
+echo `pwd`
+
 mkdir -p usr/bin
-mv build/DatasetEvaluationApp/DatasetEvaluationApp usr/bin/DatasetEvaluationApp
+cp ../DatasetEvaluationApp/DatasetEvaluationApp usr/bin/
 
 mkdir -p usr/lib
-ldd build/DatasetEvaluationApp/DatasetEvaluationApp | grep "=> /" | awk '{print $3}' | xargs -I '{}' cp -v '{}' usr/lib/
+ldd ../DatasetEvaluationApp/DatasetEvaluationApp | grep "=> /" | awk '{print $3}' | xargs -I '{}' cp -v '{}' usr/lib/
 
 cd usr/ ; find . -type f -exec sed -i -e 's|/usr|././|g' {} \; ; cd -
 
@@ -57,4 +59,4 @@ cd ..
 wget "https://github.com/probonopd/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage"
 chmod a+x appimagetool-x86_64.AppImage
 
-./appimagetool-x86_64.AppImage Pharo.AppDir
+./appimagetool-x86_64.AppImage $APP.AppDir
