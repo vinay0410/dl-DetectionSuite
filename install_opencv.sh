@@ -10,7 +10,7 @@ if [ -n "$(ls -A $HOME/opencv/build)" ];
 	wget https://github.com/opencv/opencv/archive/3.4.2.zip
 	unzip -q 3.4.2.zip -d $HOME/
 	mv $HOME/opencv-3.4.2 $HOME/opencv
-	cd opencv
+	cd $HOME/opencv
 	mkdir build && cd build
 	cmake ..
 	make -j4
