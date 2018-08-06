@@ -28,7 +28,6 @@ cache:
      - $HOME/opencv/
 
 before_install:
-  - travis cache --delete
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then wget https://www.python.org/ftp/python/2.7.15/python-2.7.15-macosx10.6.pkg ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo installer -pkg python-2.7.15-macosx10.6.pkg -target / ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then python -V ; fi
