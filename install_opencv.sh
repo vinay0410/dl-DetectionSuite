@@ -2,7 +2,7 @@
 if [ -n "$(ls -A $HOME/opencv/build)" ];
  then
  	# We're using a cached version of our OpenCV build
- 	cd $HOME/opencv/build;
+ 	cd $HOME/opencv/build;#
 	sudo make install
  else
  	# No OpenCV cache – clone and make the files
