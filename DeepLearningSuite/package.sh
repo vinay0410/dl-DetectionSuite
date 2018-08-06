@@ -28,6 +28,7 @@ ldd ../DatasetEvaluationApp/DatasetEvaluationApp | grep "=> /" | awk '{print $3}
 
 echo "Now copying Qt plugin libraries"
 mkdir platforms/
+
 # For Qt Dependency
 cp -v `find /usr -iname 'libqxcb.so'` usr/bin/platforms
 
@@ -35,7 +36,6 @@ find /usr -iname 'libqxcb.so' | xargs ldd | grep "=> /" | awk '{print $3}' | xar
 
 # Copying necessary python modules
 cp -v -r ../../DeepLearningSuiteLib/python_modules usr/lib/
-
 
 cd usr/ ; find . -type f -exec sed -i -e 's|/usr|././|g' {} \; ; cd -
 
