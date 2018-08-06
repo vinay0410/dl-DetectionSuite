@@ -27,7 +27,7 @@ mkdir -p usr/lib
 ldd ../DatasetEvaluationApp/DatasetEvaluationApp | grep "=> /" | awk '{print $3}' | xargs -I '{}' cp -v '{}' usr/lib/
 
 echo "Now copying Qt plugin libraries"
-mkdir platforms/
+mkdir usr/bin/platforms/
 
 # For Qt Dependency
 cp -v `find /usr -iname 'libqxcb.so'` usr/bin/platforms
