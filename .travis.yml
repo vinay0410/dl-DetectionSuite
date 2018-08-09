@@ -50,7 +50,7 @@ before_install:
   - if [[ ( "$TRAVIS_OS_NAME" == "linux" ) && ( "$TO_TEST" == "WITH_ROS_AND_ICE" ) ]]; then sudo apt-add-repository "deb http://zeroc.com/download/apt/ubuntu$(lsb_release -rs) stable main" ; fi
   - if [[ ( "$TRAVIS_OS_NAME" == "linux" ) && ( "$TO_TEST" == "WITH_ROS_AND_ICE" ) ]]; then sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 5E6DA83306132997 ; fi
   - if [[ ( "$TRAVIS_OS_NAME" == "linux" ) && ( "$TO_TEST" == "WITH_ROS_AND_ICE" ) ]]; then sudo apt update ; fi
-  - if [[ ( "$TRAVIS_OS_NAME" == "linux" ) && ( "$TO_TEST" == "WITH_ROS_AND_ICE" ) ]]; sudo apt install ros-kinetic-roscpp ros-kinetic-cv-bridge ros-kinetic-image-transport libzeroc-ice3.6 libzeroc-icestorm3.6 zeroc-ice-utils zeroc-ice-slice
+  - if [[ ( "$TRAVIS_OS_NAME" == "linux" ) && ( "$TO_TEST" == "WITH_ROS_AND_ICE" ) ]]; sudo apt install ros-kinetic-roscpp ros-kinetic-cv-bridge ros-kinetic-image-transport libzeroc-ice3.6 libzeroc-icestorm3.6 zeroc-ice-utils zeroc-ice-slice ; fi
   - sudo pip install numpy
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./install_opencv.sh ; fi
 
