@@ -90,4 +90,7 @@ echo `pwd`
 
 mkdir out
 cd out 
+
 ../appimagetool-x86_64.AppImage ../$APP.AppDir
+
+cd .. # Since this is being run in the same shell it is necssary to go backwards
