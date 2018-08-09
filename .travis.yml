@@ -25,7 +25,7 @@ cache:
    pip: true
    directories:
      - $HOME/opencv/
-
+     - $HOME/darknet/
 
 matrix:
   include:
@@ -52,6 +52,7 @@ before_install:
   - if [[ ( "$TRAVIS_OS_NAME" == "linux" ) && ( "$TO_TEST" == "WITH_ROS_AND_ICE" ) ]]; then sudo apt install ros-kinetic-roscpp ros-kinetic-cv-bridge ros-kinetic-image-transport zeroc-ice-all-runtime zeroc-ice-all-dev ; fi
   - sudo pip install numpy
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./install_opencv.sh ; fi
+  - ./install_darknet.sh
 
 before_script:
   - cd DeepLearningSuite
