@@ -11,7 +11,7 @@ if [ -n "$(ls -A $HOME/darknet/build)" ];
 	git clone https://github.com/JdeRobot/darknet.git
 	cd darknet
         mkdir build && cd build
-        cmake ..
+        cmake -DUSE_GPU=OFF ..
         make -j4
         sudo make install
  fi
