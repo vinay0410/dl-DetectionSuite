@@ -26,6 +26,14 @@ cache:
    directories:
      - $HOME/opencv/
 
+
+matrix:
+  include:
+    - env: TO_TEST=WITHOUT_ROS_AND_ICE
+    - env: TO_TEST=WITH_ROS_AND_ICE
+  fast_finish: true
+
+
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install boost rapidjson glog yaml-cpp qt ; fi
@@ -37,6 +45,12 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt install -y rapidjson-dev ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt install -y libboost-dev libboost-filesystem-dev libboost-system-dev libboost-program-options-dev ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt install -y libgoogle-glog-dev libyaml-cpp-dev qt5-default libqt5svg5-dev libqt5opengl5-dev ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" && "$TO_TEST" == "WITH_ROS_AND_ICE"]]; then sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" && "$TO_TEST" == "WITH_ROS_AND_ICE"]]; then sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116 ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" && "$TO_TEST" == "WITH_ROS_AND_ICE"]]; then sudo apt-add-repository "deb http://zeroc.com/download/apt/ubuntu$(lsb_release -rs) stable main" ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" && "$TO_TEST" == "WITH_ROS_AND_ICE"]]; then sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 5E6DA83306132997 ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" && "$TO_TEST" == "WITH_ROS_AND_ICE"]]; then sudo apt update ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" && "$TO_TEST" == "WITH_ROS_AND_ICE"]]; sudo apt install ros-kinetic-roscpp ros-kinetic-cv-bridge ros-kinetic-image-transport libzeroc-ice3.6 libzeroc-icestorm3.6 zeroc-ice-utils zeroc-ice-slice
   - sudo pip install numpy
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./install_opencv.sh ; fi
 
@@ -60,3 +74,4 @@ branches:
   except:
     - # Do not build tags that we create when we upload to GitHub Releases
     - /^(?i:continuous)$/
+
