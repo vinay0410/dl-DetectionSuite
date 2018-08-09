@@ -8,7 +8,7 @@
 
 export ARCH=$(arch)
 
-if [[ "$TO_TEST" == "with_ROS_AND_ICE" ]];
+if [[ "$TO_TEST" == "WITH_ROS_AND_ICE" ]];
 then
 APP=DetectionSuite_with_ROS_and_ICE
 else
