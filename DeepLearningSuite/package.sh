@@ -29,11 +29,13 @@ echo `pwd`
 mkdir -p usr/bin
 cp ../DatasetEvaluationApp/DatasetEvaluationApp usr/bin/
 
-echo "lddOutput"
-ldd --version
-ldd ../DatasetEvaluationApp/DatasetEvaluationApp
 
-echo "Copying Libraries"
+out=`find /opt -name "setup.bash"`
+if [ -a "$out"  ]
+then
+source $out
+fi
+
 
 mkdir -p usr/lib
 ldd ../DatasetEvaluationApp/DatasetEvaluationApp | grep "=> /" | awk '{print $3}' | xargs -I '{}' cp -v '{}' usr/lib/
