@@ -29,7 +29,6 @@ cache:
 
 matrix:
   include:
-    - env: TO_TEST=WITHOUT_ROS_AND_ICE
     - env: TO_TEST=WITH_ROS_AND_ICE
   fast_finish: true
 
