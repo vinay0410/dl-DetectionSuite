@@ -64,7 +64,6 @@ cd - > /dev/null
 # disable parameter expansion to forward all arguments unprocessed to the VM
 set -f
 # run the VM and pass along all arguments as is
-export QT_STYLE_OVERRIDE=GTK+
 export PYTHONPATH="$DIR/usr/lib/python_modules"
 LD_LIBRARY_PATH="$DIR/usr/lib" "${DIR}/usr/bin/DatasetEvaluationApp" "$@"
 EOF
