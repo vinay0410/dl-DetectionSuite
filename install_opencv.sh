@@ -15,4 +15,3 @@ if [ -n "$(ls -A $HOME/opencv/build)" ];
 	make -j4
 	sudo make install
  fi
-
