@@ -1,15 +1,5 @@
 language: cpp
 
-# blacklist
-branches:
-  except:
-    - master
-
-# whitelist
-branches:
-  only:
-    - travis-test
-
 os:
   - linux
   - osx
@@ -63,10 +53,10 @@ script: make -j2
 
 
 after_success:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then source ../package.sh ; fi    # To run the script in the same shell so as to setup environment variables
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then travis_wait source ../package.sh ; fi    # To run the script in the same shell so as to setup environment variables
   - ls -lh out/*            # Assuming you have some files in out/ that you would like to upload
   - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
-  - bash upload.sh out/*
+  - travis_wait bash upload.sh out/*
 
 
 branches:
