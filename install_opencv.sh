@@ -1,14 +1,9 @@
-#!/bin/sh
-
-which cmake
-sudo which cmake
-ls /usr/local
-
+#!/bin/sh=
 if [ -n "$(ls -A $HOME/opencv/build)" ];
  then
  	# We're using a cached version of our OpenCV build
  	cd $HOME/opencv/build;
-	sudo env "PATH=$PATH" make install
+	sudo make install
  else
  	# No OpenCV cache – clone and make the files
  	rm -rf $HOME/opencv;
@@ -18,5 +13,5 @@ if [ -n "$(ls -A $HOME/opencv/build)" ];
 	mkdir build && cd build
 	cmake -DWITH_GTK=OFF -DWITH_QT=ON ..
 	make -j2
-	sudo env "PATH=$PATH" make install
+	sudo make install
  fi
