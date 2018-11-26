@@ -3,7 +3,7 @@ if [ -n "$(ls -A $HOME/opencv/build)" ];
  then
  	# We're using a cached version of our OpenCV build
  	cd $HOME/opencv/build;
-	sudo -H make install
+	sudo env "PATH=$PATH" make install
  else
  	# No OpenCV cache – clone and make the files
  	rm -rf $HOME/opencv;
@@ -13,5 +13,5 @@ if [ -n "$(ls -A $HOME/opencv/build)" ];
 	mkdir build && cd build
 	cmake -DWITH_GTK=OFF -DWITH_QT=ON ..
 	make -j2
-	sudo -H make install
+	sudo env "PATH=$PATH" make install
  fi
