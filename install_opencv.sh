@@ -11,6 +11,9 @@ if [ -n "$(ls -A $HOME/opencv/build)" ];
 	unzip -q 3.4.2.zip -d $HOME/
 	mv $HOME/opencv-3.4.2 $HOME/opencv && cd $HOME/opencv
 	mkdir build && cd build
+  which cmake
+  sudo which cmake
+  ls /usr/local
 	cmake -DWITH_GTK=OFF -DWITH_QT=ON ..
 	make -j2
 	sudo env "PATH=$PATH" make install
