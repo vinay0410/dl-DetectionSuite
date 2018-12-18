@@ -17,7 +17,6 @@ fi
 
 LOWERAPP=${APP,,}
 
-
 mkdir -p $APP.AppDir/usr/
 
 cd $APP.AppDir
@@ -79,7 +78,7 @@ chmod a+x appimagetool-x86_64.AppImage
 echo `pwd`
 
 mkdir out
-cd out 
+cd out
 
 ../appimagetool-x86_64.AppImage ../$APP.AppDir
 
